@@ -3,85 +3,72 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 公開用(GitHub Pages)ビルド: 写真は顔をぼかした加工版。未承認の試作のため検索避けを付けている -->
 <meta name="robots" content="noindex, nofollow">
-<title>サークルについて | Sunny English Circle</title>
-<meta name="description" content="Sunny English Circleは0〜2歳のお子さまと保護者のための親子英語サークルです。歌って育てる英語耳をテーマに、英語の歌・手遊び・季節のアクティビティを行います。">
+<title>レッスンについて｜Sunny English Circle</title>
+<meta name="description" content="0〜2歳の赤ちゃんと保護者のための英語レッスンの内容と、Sunny English Circleが大切にしている幼児英語の考え方をご紹介します。">
 <style>
   :root {
-    --paper: #FBF7F0;
-    --paper-alt: #F4EDE2;
-    --ink: #4A4239;
-    --ink-sub: #7A6F64;
-    --clay: #B98C68;
-    --sage: #93A389;
-    --rule: #E5DCCD;
-    --walnut: #6A5A4B;
+    --orange: #F0951E;
+    --yellow: #FFC93C;
+    --blue: #4BA3D3;
+    --blue-pale: #DCEEF7;
+    --mint: #DDF4D7;
+    --cream: #FEFDEB;
+    --paper: #FFFFFF;
+    --ink: #4A4540;
+    --ink-sub: #837C73;
+    --round: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "ヒラギノ丸ゴ ProN W4",
+      "Yu Gothic UI", "Meiryo", -apple-system, sans-serif;
     --header-height: 60px;
-    --serif: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", "MS PMincho", serif;
-    --sans: -apple-system, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    --shadow: 0 6px 20px rgba(90, 120, 140, 0.08);
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
-  html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
+  html, body { max-width: 100%; overflow-x: hidden; }
 
   body {
     margin: 0;
     background-color: var(--paper);
     color: var(--ink);
-    font-family: var(--sans);
+    font-family: var(--round);
     line-height: 1.95;
     letter-spacing: 0.03em;
     padding-top: var(--header-height);
   }
 
-  img, svg, video {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  .bg-frame {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url("images/frame.jpg");
+    background-size: cover;
+    background-position: center;
   }
 
-  a {
-    color: inherit;
-  }
+  img, svg { max-width: 100%; height: auto; display: block; }
 
-  h1, h2 {
-    font-family: var(--serif);
-    font-weight: 400;
-  }
+  a { color: inherit; }
 
-  .section-inner {
-    width: 100%;
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
+  h1, h2, h3 { font-family: var(--round); font-weight: 700; margin: 0; }
+
+  .wrap { width: 100%; max-width: 720px; margin: 0 auto; padding: 0 20px; }
 
   /* ---------- Header / Menu ---------- */
   .site-header {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--header-height);
-    background-color: var(--paper);
-    border-bottom: 1px solid var(--rule);
+    top: 0; left: 0; width: 100%; height: var(--header-height);
+    background-color: rgba(255, 255, 255, 0.88);
     z-index: 1000;
     display: flex;
     align-items: center;
+    box-shadow: var(--shadow);
   }
 
-  @supports ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+  @supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
     .site-header {
-      background-color: rgba(251, 247, 240, 0.82);
-      -webkit-backdrop-filter: blur(6px);
-      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
     }
   }
 
@@ -97,9 +84,9 @@
     flex: 0 0 auto;
     width: 44px;
     height: 44px;
-    border-radius: 4px;
-    border: 1px solid var(--rule);
-    background-color: var(--paper);
+    border-radius: 999px;
+    border: 1px solid var(--blue-pale);
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -112,43 +99,28 @@
   .menu-toggle span {
     display: block;
     width: 20px;
-    height: 1px;
-    background-color: var(--ink);
+    height: 2px;
+    border-radius: 2px;
+    background-color: var(--orange);
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
 
-  .menu-toggle[aria-expanded="true"] span:nth-child(1) {
-    transform: translateY(6px) rotate(45deg);
-  }
+  .menu-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-  .menu-toggle[aria-expanded="true"] span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .menu-toggle[aria-expanded="true"] span:nth-child(3) {
-    transform: translateY(-6px) rotate(-45deg);
-  }
-
-  .site-title {
-    font-family: var(--sans);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+  .header-logo { display: flex; align-items: center; height: 100%; }
+  .header-logo img { height: 28px; width: auto; }
 
   .site-nav {
     position: fixed;
     top: var(--header-height);
     left: 12px;
     width: min(260px, calc(100% - 24px));
-    background-color: var(--paper);
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    padding: 8px;
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 10px;
+    box-shadow: var(--shadow);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
@@ -168,228 +140,351 @@
     transform: translateY(0);
   }
 
-  .site-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .site-nav li + li {
-    margin-top: 2px;
-    border-top: 1px solid var(--rule);
-  }
+  .site-nav ul { list-style: none; margin: 0; padding: 0; }
+  .site-nav li + li { margin-top: 4px; }
 
   .site-nav a {
     display: flex;
     align-items: center;
     min-height: 44px;
-    padding: 8px 14px;
+    padding: 8px 16px;
+    border-radius: 16px;
     text-decoration: none;
     color: var(--ink);
-    font-family: var(--sans);
-    font-size: 0.88rem;
-    letter-spacing: 0.08em;
+    font-size: 0.92rem;
+    letter-spacing: 0.05em;
   }
 
   .site-nav a:hover,
   .site-nav a:focus {
-    color: var(--clay);
+    color: var(--orange);
+    background-color: var(--cream);
   }
 
   .site-nav a[aria-current="page"] {
-    color: var(--clay);
-    font-weight: 500;
+    color: var(--blue);
+    font-weight: 700;
+    background-color: var(--blue-pale);
   }
 
-  /* ---------- Page header (no slideshow on inner pages) ---------- */
-  .page-header {
-    padding: 48px 0 8px;
-  }
-
-  @media (min-width: 768px) {
-    .page-header {
-      padding: 72px 0 8px;
-    }
-  }
-
-  .page-header h1 {
-    font-size: 1.5rem;
-    margin: 0;
-    letter-spacing: 0.08em;
-  }
-
-  /* ---------- Sections ---------- */
-  section.page-section {
-    padding: 64px 0;
+  /* ---------- Hero / Slideshow (index only) ---------- */
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 82vh;
+    min-height: 420px;
+    max-height: 720px;
+    overflow: hidden;
   }
 
   @media (min-width: 768px) {
-    section.page-section {
-      padding: 96px 0;
-    }
+    .hero { height: 86vh; max-height: 760px; }
   }
 
-  section.page-section.section-alt {
-    background-color: var(--paper-alt);
+  .slideshow { position: absolute; inset: 0; }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
   }
+
+  .slide.is-active { opacity: 1; }
+
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  .slide-1 img { object-position: center 45%; }
+
+  .hero-tint {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.55) 78%, rgba(255, 255, 255, 0.88) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .hero-logo-wrap {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+  }
+
+  .hero-logo-wrap img {
+    width: 280px;
+    max-width: 78vw;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .hero-logo-wrap img { width: 380px; max-width: 50vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .slide { transition: none; }
+    .slide:not(.slide-1) { opacity: 0 !important; }
+    .slide-1 { opacity: 1 !important; }
+  }
+
+  .insta-cta {
+    padding: 24px 0;
+    text-align: center;
+    background-color: var(--cream);
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 999px;
+    text-decoration: none;
+    padding: 13px 32px;
+    font-size: 0.95rem;
+    font-family: var(--round);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    box-shadow: var(--shadow);
+  }
+
+  .btn-orange { background-color: var(--orange); color: #fff; }
+  .btn-blue { background-color: var(--blue); color: #fff; }
+
+  @media (max-width: 480px) {
+    .btn { width: 100%; }
+  }
+
+  .btn-wrap { text-align: center; margin-top: 8px; }
+
+  /* ---------- Sections & Cards ---------- */
+  .page-section { padding: 56px 0; }
+
+  @media (min-width: 768px) {
+    .page-section { padding: 80px 0; }
+  }
+
+  .card {
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .card + .card { margin-top: 20px; }
 
   .eyebrow {
     display: block;
-    font-family: var(--sans);
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    color: var(--ink-sub);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    opacity: 0.8;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--blue);
+    margin-bottom: 8px;
+    font-weight: 700;
   }
 
   h2 {
     font-size: 1.3rem;
     color: var(--ink);
-    margin: 0 0 32px;
-    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    letter-spacing: 0.04em;
   }
 
-  .section-body p {
-    margin: 0 0 20px;
+  .section-body p { margin: 0 0 20px; }
+  .section-body p:last-child { margin-bottom: 0; }
+
+  /* ---------- Photos ---------- */
+  .photo {
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    aspect-ratio: 3 / 4;
   }
 
-  .section-body p:last-child {
-    margin-bottom: 0;
+  .photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 24px;
   }
 
-  .note {
-    font-size: 0.85rem;
-    color: var(--ink-sub);
-    margin-top: 20px;
+  @media (min-width: 600px) {
+    .photo-grid { grid-template-columns: 1fr 1fr; }
   }
 
-  /* dash list for lesson contents */
-  .list-dash {
+  /* ---------- Page link cards (index) ---------- */
+  .page-links {
     list-style: none;
-    margin: 0 0 20px;
+    margin: 24px 0 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .list-dash li {
+  .page-links a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: var(--ink);
+    box-shadow: var(--shadow);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  .page-links .arrow { color: var(--orange); }
+
+  /* ---------- Mission list ---------- */
+  .mission-list { list-style: none; margin: 0; padding: 0; }
+
+  .mission-list li {
     position: relative;
-    padding-left: 1.6em;
-    margin-bottom: 10px;
+    padding-left: 30px;
+    margin-bottom: 18px;
   }
 
-  .list-dash li::before {
-    content: "—";
+  .mission-list li:last-child { margin-bottom: 0; }
+
+  .mission-list li::before {
+    content: "";
     position: absolute;
     left: 0;
-    color: var(--clay);
+    top: 0.9em;
+    width: 16px;
+    height: 4px;
+    border-radius: 999px;
+    background-color: var(--blue-pale);
   }
 
-  /* in-content photos */
-  .photo-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    margin: 32px 0;
+  /* ---------- Teacher cards ---------- */
+  .teacher-card {
+    background-color: #fff;
+    border-radius: 24px;
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
   }
 
-  .photo-row figure {
-    margin: 0;
-    flex: 1 1 260px;
-    max-width: 420px;
+  .teacher-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--orange);
+    margin: 0 0 14px;
   }
 
-  .photo-row img {
-    border-radius: 10px;
-    object-fit: cover;
+  .teacher-details p { margin: 0 0 6px; font-size: 0.95rem; }
+  .teacher-details p:last-child { margin-bottom: 0; }
+
+  /* ---------- Info rows (access) ---------- */
+  .info-row {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--blue-pale);
   }
 
-  .photo-row figcaption {
-    font-size: 0.78rem;
-    color: var(--ink-sub);
-    margin-top: 8px;
-    letter-spacing: 0.03em;
+  .info-row:last-child { border-bottom: none; }
+
+  .info-label {
+    font-weight: 700;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+
+  .info-value p { margin: 0 0 4px; }
+  .info-value p:last-child { margin-bottom: 0; }
+
+  @media (min-width: 600px) {
+    .info-row { display: flex; gap: 16px; }
+    .info-label { flex: 0 0 120px; margin-bottom: 0; }
+    .info-value { flex: 1; }
   }
 
   footer {
     padding: 40px 0 56px;
-    text-align: left;
+    text-align: center;
     font-size: 0.8rem;
     color: var(--ink-sub);
-    border-top: 1px solid var(--rule);
   }
 </style>
 </head>
 <body>
+
+  <div class="bg-frame" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="header-inner">
       <button type="button" id="menuToggle" class="menu-toggle" aria-label="メニューを開く" aria-expanded="false" aria-controls="siteNav">
         <span></span><span></span><span></span>
       </button>
-      <span class="site-title">Sunny English Circle</span>
+      <span class="header-logo"><img src="images/logo-wide.png" width="1160" height="345" alt="Sunny English Circle"></span>
     </div>
   </header>
 
   <nav id="siteNav" class="site-nav">
     <ul>
       <li><a class="nav-link" href="index.html">ホーム</a></li>
-      <li><a class="nav-link" href="about.html" aria-current="page">サークルについて</a></li>
-      <li><a class="nav-link" href="schedule.html">開催エリア・会場</a></li>
-      <li><a class="nav-link" href="join.html">参加費・お申し込み</a></li>
+      <li><a class="nav-link" href="about.html" aria-current="page">レッスンについて</a></li>
+      <li><a class="nav-link" href="teachers.html">講師紹介</a></li>
+      <li><a class="nav-link" href="access.html">場所・日時・お申し込み</a></li>
     </ul>
   </nav>
 
   <main>
-    <div class="page-header">
-      <div class="section-inner">
-        <h1>サークルについて</h1>
-      </div>
-    </div>
+    <section class="page-section">
+      <div class="wrap">
+        <span class="eyebrow">Our lesson</span>
+        <h2>レッスンについて</h2>
+        <div class="card">
+          <div class="section-body">
+            <p>0〜2歳は、英語の「耳」が育つ大切な時期。</p>
+            <p>この時期は、英語をたくさん聞いて音やリズムを自然に吸収する「インプット期」です。レッスンやお家で少しずつ英語を聞き続けることで、1歳後半頃から、今まで蓄えてきた英語が少しずつ言葉や歌となって表れ始めます。</p>
+            <p>レッスンでは、音楽や歌、遊びを取り入れながら、お家でも無理なく続けられる<strong>「持続可能な英語インプット」</strong>の方法をお伝えします。</p>
+            <p>そして何より大切なのは、「英語って楽しい！」という体験。</p>
+            <p>レッスンではお母さん、お父さんと一緒に見せる笑顔や「楽しい！」という気持ちが、英語を好きになり、自然に英語を吸収していく力につながります。</p>
+            <p>親子で楽しみながら、今しか育てられない英語の耳を育てていきましょう。</p>
+          </div>
+        </div>
 
-    <section class="page-section" id="about">
-      <div class="section-inner">
-        <span class="eyebrow">About</span>
-        <h2>サークルについて</h2>
-        <div class="section-body">
-          <p>Sunny English Circle（サニー・イングリッシュ・サークル）は、0〜2歳のお子さまと保護者を対象にした親子英語サークルです。</p>
-          <!-- 要確認: 「赤ちゃんのうちから英語の音やリズムに親しめる」はbioの「歌って育てる英語耳」からの言い換え。表現として問題ないか運営者に確認する -->
-          <p>「歌って育てる英語耳」を合言葉に、赤ちゃんのうちから英語の音やリズムに親しめる時間をご用意しています。</p>
+        <div class="photo-grid">
+          <div class="photo"><img src="images/lesson-song.jpg" width="1108" height="1477" alt="マスコットのぬいぐるみを持つ講師とレッスンの様子" loading="lazy"></div>
+          <div class="photo"><img src="images/activity.jpg" width="1108" height="1477" alt="手形アートなど親子で制作したアクティビティの作品" loading="lazy"></div>
         </div>
       </div>
     </section>
 
-    <section class="page-section section-alt" id="lessons">
-      <div class="section-inner">
-        <span class="eyebrow">Lesson</span>
-        <h2>レッスンの内容</h2>
-        <div class="section-body">
-          <ul class="list-dash">
-            <li>英語の歌</li>
-            <li>手遊び</li>
-            <li>季節のアクティビティ</li>
+    <section class="page-section">
+      <div class="wrap">
+        <span class="eyebrow">Our mission</span>
+        <h2>私たちの目指すところ</h2>
+        <div class="card">
+          <ul class="mission-list">
+            <li>幼児に英語の音とリズムを楽しくインプットする</li>
+            <li>親子で英語に触れる時間を提供する</li>
+            <li>持続可能な英語学習に繋げていく</li>
           </ul>
-          <!-- 要確認: この一文は確定情報になく制作側の推測。運営者の実際の進め方と合っているか確認し、違えば削除または書き換える -->
-          <p class="note">お子さまの月齢やその日の様子に合わせて、無理なく楽しめる内容で進めます。</p>
-        </div>
-
-        <div class="photo-row">
-          <figure>
-            <!-- 掲載承認: この写真には子どもと講師の顔が写っている。保護者および講師本人の掲載承認を得るまで公開しないこと -->
-            <img src="images/lesson-song.jpg" width="1108" height="1477" alt="英語の歌を歌うレッスンの様子" loading="lazy">
-          </figure>
-          <figure>
-            <!-- 掲載承認: この写真には子どもと講師の顔が写っている。保護者および講師本人の掲載承認を得るまで公開しないこと -->
-            <img src="images/lesson-play.jpg" width="1108" height="1477" alt="講師と子どもが向かい合って楽しむレッスンの様子" loading="lazy">
-          </figure>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="section-inner">
-      <p>Sunny English Circle</p>
+    <div class="wrap">
+      <p style="margin:0;">Sunny English Circle</p>
     </div>
   </footer>
 
@@ -430,6 +525,22 @@
           closeMenu();
         }
       });
+    })();
+
+    (function () {
+      var slides = document.querySelectorAll('.slide');
+      var current = 0;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (slides.length === 0 || reduceMotion) {
+        return;
+      }
+
+      setInterval(function () {
+        slides[current].classList.remove('is-active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('is-active');
+      }, 5000);
     })();
   </script>
 
