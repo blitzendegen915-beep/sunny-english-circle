@@ -191,14 +191,14 @@
   .hero {
     position: relative;
     width: 100%;
-    height: 82vh;
-    min-height: 420px;
-    max-height: 720px;
+    height: 46vh;              /* クライアント要望で従来82vhから約半分に */
+    min-height: 320px;
+    max-height: 420px;
     overflow: hidden;
   }
 
   @media (min-width: 768px) {
-    .hero { height: 86vh; max-height: 760px; }
+    .hero { height: 50vh; max-height: 470px; }
   }
 
   .slideshow { position: absolute; inset: 0; }
@@ -219,7 +219,12 @@
     object-position: center 35%;
   }
 
-  .slide-1 img { object-position: center 45%; }
+  /* ヒーローを約半分の高さにしたためPC幅では横長に強く切り取られる。
+     被写体が切れないよう写真ごとに縦位置を指定（1280x400で実測して決定） */
+  .slide-1 img { object-position: center 60%; }   /* 外観: マスコットの顔を収める */
+  .slide-2 img { object-position: center 30%; }   /* レッスン: 講師とマスコット */
+  .slide-3 img { object-position: center 30%; }   /* 親子: 講師と子ども */
+  .slide-4 img { object-position: center 45%; }   /* 絵本: マスコットの顔と書影 */
 
   .hero-tint {
     position: absolute;
@@ -229,15 +234,32 @@
     pointer-events: none;
   }
 
+  .hero-tagline {
+    margin: 10px 0 0;
+    background-color: rgba(255, 255, 255, 0.88);
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    border-radius: 999px;
+    padding: 7px 20px;
+    box-shadow: var(--shadow);
+  }
+
+  @media (min-width: 768px) {
+    .hero-tagline { font-size: 1.1rem; padding: 9px 26px; }
+  }
+
   .hero-logo-wrap {
     position: absolute;
-    top: 8%;
+    top: 6%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 2;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 0 20px;
   }
 
@@ -248,7 +270,7 @@
   }
 
   @media (min-width: 768px) {
-    .hero-logo-wrap img { width: 380px; max-width: 50vw; }
+    .hero-logo-wrap img { width: 300px; max-width: 44vw; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -488,6 +510,7 @@
       <div class="hero-tint"></div>
       <div class="hero-logo-wrap">
         <img src="images/logo-stacked.png" width="1129" height="472" alt="Sunny English Circle">
+        <p class="hero-tagline">赤ちゃんのための英語教室</p>
       </div>
     </section>
 
